@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI= mongodb+srv://<bilalmohammed506>:<k9bWHSksT2MwzooH>@cluster0.2wrbldt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - GOOGLE_CLIENT_ID=197650016919-06ns685lggptlhnf95k9f5ikkd4gjk7b.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=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
+      - SESSION_SECRET=1e7823283465f9861a92fc055ee64e72c72ad0595eebc791d47d7e5921d48e9d94692c261658208c496f1dca03a2545c1f4a84813af92f735bc953e669403dc8
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo-db
+      - MONGO_INITDB_ROOT_PASSWORD=gMszBzrn6R5SQeAx
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
